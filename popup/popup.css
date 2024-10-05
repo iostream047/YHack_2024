@@ -1,0 +1,60 @@
+#amazon-extension-mini-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10000;
+  width: 200px;
+  text-align: center;
+}
+
+#amazon-extension-mini-popup button {
+  margin: 5px;
+  padding: 8px 12px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#amazon-extension-mini-popup button:hover {
+  background-color: #005bb5;
+}
+
+/* Larger popup styling */
+#amazon-extension-large-popup {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: white;
+  border: 2px solid #0073e6;
+  padding: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  z-index: 10001;
+  width: 300px;
+}
+
+/* Close button styling */
+#amazon-extension-large-popup button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Larger popup styling */
+#amazon-extension-confirmation-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 2px solid #0073e6;
+  padding: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  z-index: 10001;
+  width: 300px;
+  text-align: center;
+}

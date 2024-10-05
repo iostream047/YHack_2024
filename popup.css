@@ -1,0 +1,30 @@
+#amazon-extension-login-popup {
+    text-align: center;
+    padding: 20px;
+    width: 250px;
+  }
+  
+  #amazon-extension-login-popup input {
+    width: 90%;
+    margin: 10px 0;
+    padding: 8px;
+  }
+  
+  #amazon-extension-login-popup button {
+    padding: 8px 12px;
+    margin: 5px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #amazon-extension-login-popup button:hover {
+    background-color: #218838;
+  }
+  
+  #amazon-extension-login-popup p {
+    color: red;
+    margin-top: 10px;
+  }
+  
