@@ -2,6 +2,7 @@
   text-align: center;
   padding: 20px;
   width: 250px;
+  background-color: white;
 }
 
 /* Styles for input and buttons */
@@ -27,6 +28,13 @@
 #amazon-extension-login-popup p {
   color: red;
   margin-top: 10px;
+}
+
+/* New styles for the transformed popup */
+#amazon-extension-login-popup.transformed {
+  background-color: #FF8C00; /* Dark orange */
+  width: 300px; /* Adjust width for new layout */
+  height: 400px; /* Adjust height */
 }
 
 /* New styles for image grid */
