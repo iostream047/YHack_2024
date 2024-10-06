@@ -15,8 +15,8 @@
   transform: scale(1.05) translateY(-20px); /* Smooth scaling effect and slight slide-up */
   opacity: 1;
   background-color: none; /* Remove background color when transformed */
-  width: 545px;
-  height: 422px;
+  width: 1123px;
+  height: 719px;
   padding: 0; /* Remove padding for the transformed state */
   box-shadow: 0px 10px 20px rgba(0, 128, 0, 0.5); /* Slightly stronger shadow for larger popup */
   transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth animation for transformation */

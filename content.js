@@ -202,7 +202,7 @@ function showConfirmationPopup(addToCartButton) {
     confirmationPopup.innerHTML = `
       <div id="amazon-extension-confirmation-popup" class="amazon-popup amazon-popup-large">
         <div style="text-align: center;">
-          <h2>Are you sure?</h2>
+          <h2>Are you sure this is a sustainable desicion?</h2>
           <button id="confirm-add-to-cart-btn" style="padding: 10px 20px; margin: 10px; background-color: #28a745; color: white;">Yes</button>
           <button id="cancel-add-to-cart-btn" style="padding: 10px 20px; margin: 10px; background-color: #dc3545; color: white;">No</button>
         </div>
