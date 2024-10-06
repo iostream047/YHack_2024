@@ -1,4 +1,5 @@
 // Function to show the mini popup
+var override_default_action = true;
 function showMiniPopup() {
   if (document.getElementById('amazon-extension-mini-popup')) {
     return; // If the popup already exists, don't show again
@@ -8,18 +9,56 @@ function showMiniPopup() {
   miniPopup.innerHTML = `
     <div id="amazon-extension-mini-popup" class="amazon-popup">
       <p>Do you want to learn more about this product?</p>
-      <button id="learn-more-btn">Learn More</button>
-      <button id="close-popup-btn">Close</button>
+      <div class="buttons-container">
+        <button id="learn-more-btn">Learn More</button>
+        <button id="close-popup-btn">Close</button>
+      </div>
     </div>
   `;
 
   document.body.appendChild(miniPopup);
 
   // Handle "Learn More" button click
-  document.getElementById("learn-more-btn").addEventListener("click", function () {
-    showLargerPopup();
-    miniPopup.remove();
-  });
+  document
+    .getElementById("learn-more-btn")
+    .addEventListener("click", function () {
+      const description =
+        "BLACKOUT FUNCTION: XWZO bedroom curtains can block 85%-95% of the sunlight (dark color is better), can protect your furniture, flooring and valuables from sunlight, suitable for bedrooms, living rooms, children's rooms and so on."; // Adjust selector to extract product description from the amazon listing
+      const materials = "Polyester"; // Adjust selector to extract materials from the amazon listing
+      const userId = localStorage.getItem("userId"); // Replace with the actual user ID from your app
+
+      // Prepare the request data
+      const requestData = {
+        description,
+        materials,
+      };
+
+      // Send a POST request to the generate API
+      fetch(`http://localhost:3000/api/generate?id=${userId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to generate score. Please try again.");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Generated data:", data);
+          // You can display the score and classification here
+          alert(
+            `Score: ${data.score}, Classification: ${data.productClassification}` // to access the ESG score and product classification attribute. To access other variables like the name of the person and all you can check the User schema in User.model.js
+          );
+        });
+      localStorage.setItem("data", data).catch((error) => {
+        console.error("Error during API call:", error);
+        alert(error.message); // Display error message to the user
+      });
+    });
 
   // Handle "Close" button click
   document.getElementById("close-popup-btn").addEventListener("click", function () {
@@ -78,6 +117,7 @@ function showConfirmationPopup(addToCartButton) {
     document.getElementById("confirm-add-to-cart-btn").addEventListener("click", function () {
         console.log("Confirmed: Adding to cart."); // Log the action
         confirmationPopup.remove(); // Remove the popup
+        override_default_action = false;
         // Create a new click event and dispatch it to the original "Add to Cart" button
         let clickEvent = new MouseEvent('click', {
             bubbles: true,
@@ -99,8 +139,10 @@ function overrideAddToCart() {
     const addToCartButton = document.getElementById('add-to-cart-button'); // ID from the provided HTML
     if (addToCartButton) {
         addToCartButton.addEventListener('click', function (event) {
+          if(override_default_action){
             event.preventDefault(); // Prevent the default "Add to Cart" action
             showConfirmationPopup(addToCartButton); // Show confirmation popup
+          }
         });
     } else {
         console.error("Add to Cart button not found!"); // Log error if button is not found

@@ -2,26 +2,56 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: white;
+  background-color: #228B22;
   border: 1px solid #ccc;
-  padding: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 10px;
+  box-shadow: 0px 4px 10px rgba(0, 128, 0, 0.2);
   z-index: 10000;
-  width: 200px;
+  width: 300px;
+  height: 120px;
   text-align: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#amazon-extension-mini-popup p {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  color: white;
+  margin: 5px 0;
+}
+
+/* Updated buttons container for horizontal alignment */
+#amazon-extension-mini-popup .buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px; /* Adjust padding for button spacing */
 }
 
 #amazon-extension-mini-popup button {
   margin: 5px;
   padding: 8px 12px;
-  background-color: #0073e6;
+  background-color: #006400;
   color: white;
-  border: none;
+  border: 2px solid white;
+  border-radius: 20px;
   cursor: pointer;
+  font-family: 'Arial', sans-serif;
+  transition: background-color 0.3s ease;
+  flex: 1; /* Allow buttons to take up equal space */
 }
 
 #amazon-extension-mini-popup button:hover {
-  background-color: #005bb5;
+  background-color: #006400;
+}
+
+#amazon-extension-mini-popup button:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px #90EE90;
 }
 
 /* Larger popup styling */
@@ -44,7 +74,7 @@
   cursor: pointer;
 }
 
-/* Larger popup styling */
+/* Confirmation popup styling */
 #amazon-extension-confirmation-popup {
   position: fixed;
   top: 50%;
@@ -57,4 +87,25 @@
   z-index: 10001;
   width: 300px;
   text-align: center;
+}
+
+/* Button styles for confirmation popup */
+#amazon-extension-confirmation-popup button {
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+}
+
+#confirm-add-to-cart-btn {
+  background-color: #28a745;
+  color: white;
+  border: 2px solid #218838;
+}
+
+#cancel-add-to-cart-btn {
+  background-color: #dc3545;
+  color: white;
+  border: 2px solid #c82333;
 }

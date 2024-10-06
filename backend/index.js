@@ -4,6 +4,7 @@ import axios from "axios";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { connectDB } from "./config/db.js";
 import User from "./Models/User.model.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ connectDB();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_AI);
 
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
