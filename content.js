@@ -118,8 +118,8 @@ fetch("http://localhost:3000/api/generate", {
     const closeButton = document.createElement("span");
     closeButton.innerHTML = "&times;"; // "×" symbol for the close button
     closeButton.style.position = "absolute";
-    closeButton.style.top = "10px";
-    closeButton.style.right = "10px";
+    closeButton.style.top = "90px";
+    closeButton.style.right = "20px";
     closeButton.style.cursor = "pointer";
     closeButton.style.fontSize = "20px";
     closeButton.style.fontWeight = "bold";
@@ -129,18 +129,65 @@ fetch("http://localhost:3000/api/generate", {
       popup.style.display = "none"; // Hide the popup when the button is clicked
     });
 
-    // Add the content to the responseElement
-    responseElement.innerHTML = `
-      <h2>Response Data:</h2>
-      <p>Score: ${data.score}</p>
-      <p>Classification: ${data.productClassification}</p>
-    `;
-    const imageElement = document.createElement("img");
-imageElement.src = "images/load.png"; // Use data.image if available, otherwise use a default image URL
+   // Add the content to the responseElement
+// Style the responseElement to use flexbox for layout
+responseElement.style.display = "flex";
+responseElement.style.flexDirection = "column"; // Stack elements vertically
+responseElement.style.justifyContent = "flex-end"; // Move content to bottom
+responseElement.style.height = "100%"; // Ensure it takes up the full height of the popup
+responseElement.style.backgroundColor = "#99cc66"; // Background color
+responseElement.style.padding = "20px"; // Padding
+responseElement.style.border = "1px solid #ccc"; // Border
+responseElement.style.borderRadius = "10px"; // Rounded corners
+responseElement.style.boxShadow = "0px 4px 10px rgba(0, 128, 0, 0.2)"; // Box shadow
+responseElement.style.fontFamily = "'Arial', sans-serif"; // Font family
+responseElement.style.gap = "20px"; // Gap between image and text container
+
+// Create a text container
+const textContainer = document.createElement("div");
+textContainer.style.display = "flex";
+textContainer.style.flexDirection = "column"; // Stack elements vertically
+textContainer.style.alignItems = "center"; // Center text horizontally
+textContainer.style.color = "#254222"; // Text color
+textContainer.style.gap = "10px"; // Gap between text lines
+// Add the content to the text container
+textContainer.innerHTML = `
+  <h2 style="font-size: 24px; margin: 0; padding: 0;">Response Data:</h2>
+  <p style="font-size: 20px; margin: 0; padding: 0;">Score: ${data.score}</p>
+  <p style="font-size: 20px; margin: 0; padding: 0;">Classification: ${data.productClassification}</p>
+`;
+
+// Create the image element
+const imageElement = document.createElement("img");
+imageElement.src = chrome.runtime.getURL("images/load.png");
+
+// Style the image
 imageElement.style.width = "469px"; // Set the image width
 imageElement.style.height = "554px"; // Set the image height
-imageElement.style.margin = "10px"; // Add some margin around the image
+imageElement.style.margin = "0 auto"; // Center image horizontally
+imageElement.style.borderRadius = "10px"; // Match popup's rounded corners
 imageElement.alt = "Product Image"; // Add alt text for accessibility
+
+// Append the image and text container to the response element
+responseElement.appendChild(imageElement);
+responseElement.appendChild(textContainer);
+responseElement.appendChild(closeButton);
+
+// Style the close button
+closeButton.style.padding = "8px 12px";
+closeButton.style.margin = "5px";
+closeButton.style.backgroundColor = "#ece2b1"; // Button background color
+closeButton.style.color = "white";
+closeButton.style.border = "2px solid #254222"; // Button border
+closeButton.style.borderRadius = "20px";
+closeButton.style.cursor = "pointer";
+
+// Append the response element to the popup
+popup.appendChild(responseElement);
+
+// Set the popup styling
+popup.style.width = "500px"; 
+popup.style.height = "800px";
 
     
     
@@ -149,8 +196,8 @@ imageElement.alt = "Product Image"; // Add alt text for accessibility
 
     
     popup.appendChild(responseElement);
-    popup.style.width = "469px"; 
-    popup.style.height = "600px";
+    popup.style.width = "500px"; 
+    popup.style.height = "800px";
   })
   .catch((error) => {
     console.error("Error during API call:", error);
@@ -202,7 +249,7 @@ function showConfirmationPopup(addToCartButton) {
     confirmationPopup.innerHTML = `
       <div id="amazon-extension-confirmation-popup" class="amazon-popup amazon-popup-large">
         <div style="text-align: center;">
-          <h2>Are you sure this is a sustainable desicion?</h2>
+          <h2>Are you sure this is a sustainable decision?</h2>
           <button id="confirm-add-to-cart-btn" style="padding: 10px 20px; margin: 10px; background-color: #28a745; color: white;">Yes</button>
           <button id="cancel-add-to-cart-btn" style="padding: 10px 20px; margin: 10px; background-color: #dc3545; color: white;">No</button>
         </div>

@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
       
         // Change the popup content and apply the transformed class
         popup.innerHTML = `
-          <img src="images/Login.jpg" alt="Image" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="images/Login.jpg" alt="Image">
         `;
         popup.style.background = "none"; // Remove background for image
         popup.classList.add("transformed"); // Apply the transformed class with animation
