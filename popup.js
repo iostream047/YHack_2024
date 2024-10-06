@@ -31,41 +31,41 @@ document.addEventListener("DOMContentLoaded", function() {
   // Placeholder login function
   async function loginUser(email, password) {
     const response = await fetch("http://localhost:3000/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username: email, password }), // Ensure keys match your backend
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: email, password }), // Ensure keys match your backend
     });
 
     const data = await response.json();
 
     if (response.ok) {
-      console.log("Login successful:", data);
-      message.textContent = "Logged in successfully!";
+        console.log("Login successful:", data);
+        const popup = document.getElementById("amazon-extension-login-popup");
+        const message = document.querySelector("#amazon-extension-login-popup p");
+
+        message.textContent = "Logged in successfully!";
       
-      // Transform the popup into a blank orange popup with images
-      popup.innerHTML = `
-        <div class="image-grid">
-          <img src="YHack_2024/images/Unsustainable products.png" alt="Image 1">
-          <img src="YHack_2024/images/ten.png" alt="Image 2">
-          <img src="YHack_2024/images/Sustainable products.png" alt="Image 3">
-          <img src="YHack_2024/images/Sad Earth.png" alt="Image 4">
-          <img src="YHack_2024/images/Pet health bar.png" alt="Image 5">
-          <img src="YHack_2024/images/four.png" alt="Image 1">
-        </div>
-      `;
-      popup.style.backgroundColor = "#FF8C00";  // Dark orange background
+        // Change the popup content and apply the transformed class
+        popup.innerHTML = `
+          <img src="images/Login.png" alt="Image" style="width: 100%; height: 100%; object-fit: cover;">
+        `;
+        popup.style.background = "none"; // Remove background for image
+        popup.classList.add("transformed"); // Apply the transformed class with animation
+
     } else {
-      console.error("Login error:", data);
-      message.textContent = "Server error. Try again.";
+        console.error("Login error:", data);
+        const message = document.querySelector("#amazon-extension-login-popup p");
+        message.textContent = "Server error. Try again.";
     }
-  }
+}
+
 
   // Placeholder signup function
   function signupUser(email, password) {
     // Prepare the data to send to the server
-    const data = { username: email, password }; // Use email as username or adjust as necessary
+    const data = { username: email, password }; 
 
     // Send a POST request to the signup API
     fetch("http://localhost:3000/api/signup", {

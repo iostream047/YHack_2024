@@ -2,52 +2,100 @@
   text-align: center;
   padding: 20px;
   width: 250px;
-  background-color: white;
+  background-color: #99cc66; /* Match background color with mini popup */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 128, 0, 0.2);
+  z-index: 10001;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth animation for popup */
+  font-family: 'Arial', sans-serif; /* Consistent font */
 }
 
-/* Styles for input and buttons */
+#amazon-extension-login-popup.transformed {
+  transform: scale(1.05) translateY(-20px); /* Smooth scaling effect and slight slide-up */
+  opacity: 1;
+  background-color: none; /* Remove background color when transformed */
+  width: 545px;
+  height: 422px;
+  padding: 0; /* Remove padding for the transformed state */
+  box-shadow: 0px 10px 20px rgba(0, 128, 0, 0.5); /* Slightly stronger shadow for larger popup */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth animation for transformation */
+}
+
+#amazon-extension-login-popup img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image fully covers the popup */
+  border-radius: 10px; /* Match popup's rounded corners */
+}
+
+/* Input styles */
 #amazon-extension-login-popup input {
   width: 90%;
   margin: 10px 0;
   padding: 8px;
+  border: 2px solid #254222; /* Match border with mini popup */
+  border-radius: 10px;
+  text-align: center;
 }
 
+/* Button styles */
 #amazon-extension-login-popup button {
   padding: 8px 12px;
   margin: 5px;
-  background-color: #28a745;
+  background-color: #ece2b1; /* Match button background with mini popup */
   color: white;
-  border: none;
+  border: 2px solid #254222; /* Match border with mini popup */
+  border-radius: 20px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Full width buttons */
 }
 
 #amazon-extension-login-popup button:hover {
-  background-color: #218838;
+  background-color: #006400; /* Hover color same as mini popup */
 }
 
+/* Message styles */
 #amazon-extension-login-popup p {
   color: red;
   margin-top: 10px;
+  font-family: 'Arial', sans-serif;
 }
 
-/* New styles for the transformed popup */
+/* Subtle entrance animation */
+@keyframes popup-slide-in {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+#amazon-extension-login-popup {
+  animation: popup-slide-in 0.7s ease-out;
+}
+
+/* Transformed state animation */
+@keyframes transformed-popup-slide-in {
+  from {
+      opacity: 0;
+      transform: scale(0.9) translateY(-20px); /* Start slightly smaller and higher */
+  }
+  to {
+      opacity: 1;
+      transform: scale(1) translateY(0); /* Scale to full size with smooth slide-down */
+  }
+}
+
 #amazon-extension-login-popup.transformed {
-  background-color: #FF8C00; /* Dark orange */
-  width: 300px; /* Adjust width for new layout */
-  height: 400px; /* Adjust height */
+  animation: transformed-popup-slide-in 0.5s ease-out; /* Apply the animation */
 }
 
-/* New styles for image grid */
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.image-grid img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
+/* Centered placeholder text */
+#amazon-extension-login-popup input::placeholder {
+  text-align: center; /* Center the placeholder text specifically */
 }

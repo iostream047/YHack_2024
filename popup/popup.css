@@ -1,8 +1,21 @@
+/* Subtle entrance animation */
+@keyframes popup-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Slide-up effect */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mini popup styling */
 #amazon-extension-mini-popup {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #228B22;
+  background-color: #99cc66;
   border: 1px solid #ccc;
   padding: 15px 10px;
   box-shadow: 0px 4px 10px rgba(0, 128, 0, 0.2);
@@ -15,12 +28,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: popup-slide-in 0.5s ease-out;
 }
 
 #amazon-extension-mini-popup p {
   font-family: 'Arial', sans-serif;
   font-size: 14px;
-  color: white;
+  color: rgb(255, 255, 255);
   margin: 5px 0;
 }
 
@@ -35,9 +49,9 @@
 #amazon-extension-mini-popup button {
   margin: 5px;
   padding: 8px 12px;
-  background-color: #006400;
+  background-color: #ece2b1;
   color: white;
-  border: 2px solid white;
+  border: 2px solid #254222;
   border-radius: 20px;
   cursor: pointer;
   font-family: 'Arial', sans-serif;
@@ -74,38 +88,73 @@
   cursor: pointer;
 }
 
-/* Confirmation popup styling */
+/* Updated confirmation popup styling */
 #amazon-extension-confirmation-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
-  border: 2px solid #0073e6;
-  padding: 20px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  background-color: #99cc66;
+  border: 1px solid #ccc;
+  padding: 15px 10px;
+  box-shadow: 0px 4px 10px rgba(0, 128, 0, 0.2);
   z-index: 10001;
   width: 300px;
   text-align: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: popup-slide-in 0.5s ease-out;
 }
 
-/* Button styles for confirmation popup */
+/* Text inside confirmation popup */
+#amazon-extension-confirmation-popup p {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  margin: 10px 0;
+}
+
+/* Button container with horizontal alignment */
+#amazon-extension-confirmation-popup .buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+}
+
+/* Updated button styles similar to mini popup */
 #amazon-extension-confirmation-popup button {
-  padding: 10px 20px;
-  margin: 10px;
-  border-radius: 25px;
+  margin: 5px;
+  padding: 8px 12px;
+  background-color: #ece2b1;
+  color: white;
+  border: 2px solid #254222;
+  border-radius: 20px;
   cursor: pointer;
   font-family: 'Arial', sans-serif;
+  transition: background-color 0.3s ease;
+  flex: 1; /* Allow buttons to take up equal space */
 }
 
+#amazon-extension-confirmation-popup button:hover {
+  background-color: #006400;
+}
+
+#amazon-extension-confirmation-popup button:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px #90EE90;
+}
+
+/* Confirm and Cancel button specific styles */
 #confirm-add-to-cart-btn {
   background-color: #28a745;
-  color: white;
   border: 2px solid #218838;
 }
 
 #cancel-add-to-cart-btn {
   background-color: #dc3545;
-  color: white;
   border: 2px solid #c82333;
 }
