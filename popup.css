@@ -1,3 +1,20 @@
+/* <style> 
+  @import url(<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">);
+</style>
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins' sans-serif ;
+} */
+
+.poppins-bold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
 #amazon-extension-login-popup {
   text-align: center;
   padding: 20px;
@@ -63,36 +80,11 @@
   font-family: 'Arial', sans-serif;
 }
 
-/* Subtle entrance animation */
-@keyframes popup-slide-in {
-  from {
-      opacity: 0;
-      transform: translateY(-20px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
-
-#amazon-extension-login-popup {
-  animation: popup-slide-in 0.7s ease-out;
-}
-
-/* Transformed state animation */
-@keyframes transformed-popup-slide-in {
-  from {
-      opacity: 0;
-      transform: scale(0.9) translateY(-20px); /* Start slightly smaller and higher */
-  }
-  to {
-      opacity: 1;
-      transform: scale(1) translateY(0); /* Scale to full size with smooth slide-down */
-  }
-}
-
+/* New styles for the transformed popup */
 #amazon-extension-login-popup.transformed {
-  animation: transformed-popup-slide-in 0.5s ease-out; /* Apply the animation */
+  background-color: #FF8C00; /* Dark orange */
+  width: 300px; /* Adjust width for new layout */
+  height: 400px; /* Adjust height */
 }
 
 /* Centered placeholder text */
