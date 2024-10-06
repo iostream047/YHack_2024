@@ -9,10 +9,23 @@
 <body>
   <div id="amazon-extension-login-popup">
     <h2>Login / Signup</h2>
-    <input type="email" id="user-email" placeholder="Email" required>
-    <input type="password" id="user-password" placeholder="Password" required>
-    <button id="login-btn">Login</button>
-    <button id="signup-btn">Signup</button>
+    <div class="input_fields">
+      <input type="email" id="user-email" placeholder="Email" required>
+      <input type="password" id="user-password" placeholder="Password" required>
+    </div>
+    <div class="submit_buttons">
+      <button id="login-btn">Login</button>
+      <button id="signup-btn">Signup</button>
+    </div>
+    <div class="remember_forgot">
+      <div class="remember">
+        <input type="checkbox" id="remember">
+        <label for="remember">Remember me</label>
+      </div>
+      <div class = "forgot">
+        ><a href="#">Forgot Password.</a>
+      </div>
+    </div>
     <p id="message"></p>
   </div>
   
